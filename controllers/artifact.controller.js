@@ -1,12 +1,11 @@
 import {
   createArtifactService,
-  getAllArtifactsService,
+  getArtifactsService,
 } from "../services/artifact.service.js";
 
 export const createArtifact = async (req, res) => {
   try {
     const { title, content, status } = req.body;
-    const author = req.user._id;
 
     if (!title || !content) {
       return res.status(400).json({
@@ -18,8 +17,8 @@ export const createArtifact = async (req, res) => {
     const artifact = await createArtifactService({
       title,
       content,
-      status, 
-      author,
+      userId: req.user.id,
+      status,
     });
 
     res.status(201).json({
@@ -37,7 +36,10 @@ export const createArtifact = async (req, res) => {
 
 export const getAllArtifacts = async (req, res) => {
   try {
-    const artifacts = await getAllArtifactsService();
+    const artifacts = await getArtifactsService({
+      userId: req.user.id,
+      role: req.user.role || "USER"
+    });
     res.status(200).json({
       success: true,
       artifacts,
