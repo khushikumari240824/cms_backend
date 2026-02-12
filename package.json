@@ -2,10 +2,11 @@
   "name": "cms_backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,12 +18,15 @@
     "cors": "^2.8.6",
     "dotenv": "^17.2.4",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
     "jsonwebtoken": "^9.0.3",
     "middleware": "^1.0.0",
     "mongoose": "^9.2.0",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
+    "ngrok": "^5.0.0-beta.2",
     "node": "^25.6.0",
+    "node-cron": "^4.2.1",
     "route": "^0.2.5"
   }
 }
